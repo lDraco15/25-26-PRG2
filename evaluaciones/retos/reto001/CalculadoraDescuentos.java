@@ -17,23 +17,22 @@ public class CalculadoraDescuentos {
                 int NumeroDeProductos = 0;
 
                 System.out.println("Carrito de Compra");
-                
-                    System.out.print("Nombre del producto (o 'fin' para terminar): ");
-                    String nombre = sc.nextLine();
-                    if (nombre.equalsIgnoreCase("fin")) {
-                        break;
-                    }
-                    NombresDeProductos[NumeroDeProductos] = nombre;
 
-                    System.out.print("Precio de '" + nombre + "': ");
-                    PreciosDeProductos[NumeroDeProductos] = sc.nextDouble();
+                System.out.print("Nombre del producto (o 'fin' para terminar): ");
+                String nombre = sc.nextLine();
+                if (nombre.equalsIgnoreCase("fin")) {
+                    break;
+                }
+                NombresDeProductos[NumeroDeProductos] = nombre;
 
-                    System.out.print("Cantidad de '" + nombre + "': ");
-                    CantidadDeProductos[NumeroDeProductos] = sc.nextInt();
-                    sc.nextLine();
+                System.out.print("Precio de '" + nombre + "': ");
+                PreciosDeProductos[NumeroDeProductos] = sc.nextDouble();
 
-                    NumeroDeProductos++;
-                
+                System.out.print("Cantidad de '" + nombre + "': ");
+                CantidadDeProductos[NumeroDeProductos] = sc.nextInt();
+                sc.nextLine();
+
+                NumeroDeProductos++;
 
                 if (NumeroDeProductos == 0) {
                     System.out.println("Carrito vacio, no se puede calcular el descuento.");
@@ -57,37 +56,36 @@ public class CalculadoraDescuentos {
 
                 double PrecioFinal = PrecioTotal;
 
-                if (TipoCliente == 1) { // Normal
-                    if (Rebaja == 's') {
-                        PrecioFinal = PrecioFinal - (PrecioFinal * 0.10);
-                    }
-                    if (CantidadTotal >= 5) {
-                        PrecioFinal = PrecioFinal - (PrecioFinal * 0.05);
-                    }
-                } else if (TipoCliente == 2) { // Estudiante
-                    PrecioFinal = PrecioFinal - (PrecioFinal * 0.15);
-                    if (Rebaja == 's') {
-                        PrecioFinal = PrecioFinal - (PrecioFinal * 0.10);
-                    }
-                    if (CantidadTotal >= 3) {
-                        PrecioFinal = PrecioFinal - (PrecioFinal * 0.08);
-                    }
-                } else if (TipoCliente == 3) { // Jubilado
-                    PrecioFinal = PrecioFinal - (PrecioFinal * 0.20);
-                    if (Rebaja == 's') {
+                switch (TipoCliente) {
+                    case 1:
+                        if (Rebaja == 's') {
+                            PrecioFinal = PrecioFinal - (PrecioFinal * 0.10);
+                        }   if (CantidadTotal >= 5) {
+                            PrecioFinal = PrecioFinal - (PrecioFinal * 0.05);
+                        }   break;
+                    case 2:
                         PrecioFinal = PrecioFinal - (PrecioFinal * 0.15);
-                    }
-                    if (CantidadTotal >= 2) {
-                        PrecioFinal = PrecioFinal - (PrecioFinal * 0.10);
-                    }
-                } else if (TipoCliente == 4) { // VIP
-                    PrecioFinal = PrecioFinal - (PrecioFinal * 0.30);
-                    if (Rebaja == 's') {
+                        if (Rebaja == 's') {
+                            PrecioFinal = PrecioFinal - (PrecioFinal * 0.10);
+                        }   if (CantidadTotal >= 3) {
+                            PrecioFinal = PrecioFinal - (PrecioFinal * 0.08);
+                        }   break;
+                    case 3:
                         PrecioFinal = PrecioFinal - (PrecioFinal * 0.20);
-                    }
-                    if (CantidadTotal >= 1) {
-                        PrecioFinal = PrecioFinal - (PrecioFinal * 0.15);
-                    }
+                        if (Rebaja == 's') {
+                            PrecioFinal = PrecioFinal - (PrecioFinal * 0.15);
+                        }   if (CantidadTotal >= 2) {
+                            PrecioFinal = PrecioFinal - (PrecioFinal * 0.10);
+                        }   break;
+                    case 4:
+                        PrecioFinal = PrecioFinal - (PrecioFinal * 0.30);
+                        if (Rebaja == 's') {
+                            PrecioFinal = PrecioFinal - (PrecioFinal * 0.20);
+                        }   if (CantidadTotal >= 1) {
+                            PrecioFinal = PrecioFinal - (PrecioFinal * 0.15);
+                        }   break;
+                    default:
+                        break;
                 }
 
                 if (PrecioFinal > 500) {

@@ -17,7 +17,7 @@ public class CalculadoraDescuentos {
                 int NumeroDeProductos = 0;
 
                 System.out.println("Carrito de Compra");
-                while (NumeroDeProductos < 10) {
+                
                     System.out.print("Nombre del producto (o 'fin' para terminar): ");
                     String nombre = sc.nextLine();
                     if (nombre.equalsIgnoreCase("fin")) {
@@ -33,7 +33,7 @@ public class CalculadoraDescuentos {
                     sc.nextLine();
 
                     NumeroDeProductos++;
-                }
+                
 
                 if (NumeroDeProductos == 0) {
                     System.out.println("Carrito vacio, no se puede calcular el descuento.");

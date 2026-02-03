@@ -38,14 +38,15 @@ public class CalculadoraDescuentos {
                     System.out.println("Carrito vacio, no se puede calcular el descuento.");
                     continue;
                 }
-
-                // Calcular total del carrito
                 double PrecioTotal = 0;
                 int CantidadTotal = 0;
                 for (int i = 0; i < NumeroDeProductos; i++) {
                     PrecioTotal += PreciosDeProductos[i] * CantidadDeProductos[i];
                     CantidadTotal += CantidadDeProductos[i];
                 }
+
+                
+                
 
                 System.out.println("Configuracion del Descuento");
                 System.out.print("Tipo de cliente (1=Normal, 2=Estudiante, 3=Jubilado, 4=VIP): ");
@@ -54,9 +55,41 @@ public class CalculadoraDescuentos {
                 System.out.print("Es temporada de rebajas? (s/n): ");
                 char Rebaja = sc.next().charAt(0);
 
-                double PrecioFinal = PrecioTotal;
+                double PrecioFinal = ValidarCliente(TipoCliente, Rebaja, PrecioTotal, CantidadTotal);
 
-                switch (TipoCliente) {
+                
+
+                System.out.println("Resumen de Compra");
+                System.out.println("Precio original total: " + PrecioTotal + " euros");
+                System.out.println("Numero total de productos: " + CantidadTotal);
+                System.out.println("Precio final con descuento: " + PrecioFinal + " euros");
+                System.out.println("Ahorro total: " + (PrecioTotal - PrecioFinal) + " euros");
+                if (PrecioTotal > 0) {
+                    double porcentaje = ((PrecioTotal - PrecioFinal) / PrecioTotal) * 100;
+                    System.out.println("Porcentaje de ahorro: " + porcentaje + "%");
+                }
+            }
+
+        }
+    }
+
+    static int DesplegarMenu() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("[1] Realizar Nueva Compra");
+        System.out.println("[2] Salir");
+        System.out.print("Opcion: ");
+        int OpcionDeMenu = sc.nextInt();
+        sc.nextLine();
+
+        return OpcionDeMenu;
+
+    }
+
+    static double  ValidarCliente(int TipoCliente, char Rebaja, double PrecioFinal, int CantidadTotal){
+
+        switch (TipoCliente) {
+            
                     case 1:
                         if (Rebaja == 's') {
                             PrecioFinal = PrecioFinal - (PrecioFinal * 0.10);
@@ -90,32 +123,9 @@ public class CalculadoraDescuentos {
 
                 if (PrecioFinal > 500) {
                     PrecioFinal = PrecioFinal - 50;
+                    
                 }
-
-                System.out.println("Resumen de Compra");
-                System.out.println("Precio original total: " + PrecioTotal + " euros");
-                System.out.println("Numero total de productos: " + CantidadTotal);
-                System.out.println("Precio final con descuento: " + PrecioFinal + " euros");
-                System.out.println("Ahorro total: " + (PrecioTotal - PrecioFinal) + " euros");
-                if (PrecioTotal > 0) {
-                    double porcentaje = ((PrecioTotal - PrecioFinal) / PrecioTotal) * 100;
-                    System.out.println("Porcentaje de ahorro: " + porcentaje + "%");
-                }
-            }
-
-        }
+         return PrecioFinal;       
     }
 
-    static int DesplegarMenu() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("[1] Realizar Nueva Compra");
-        System.out.println("[2] Salir");
-        System.out.print("Opcion: ");
-        int OpcionDeMenu = sc.nextInt();
-        sc.nextLine();
-
-        return OpcionDeMenu;
-
-    }
 }

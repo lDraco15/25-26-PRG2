@@ -10,93 +10,93 @@ public class CalculadoraDescuentos {
             System.out.println("[1] Realizar Nueva Compra");
             System.out.println("[2] Salir");
             System.out.print("Opcion: ");
-            int menuOpt = sc.nextInt();
+            int OpcionDeMenu = sc.nextInt();
             sc.nextLine(); 
 
-            if (menuOpt == 2) {
+            if (OpcionDeMenu == 2) {
                 System.out.println("Saliendo del sistema.");
                 break;
             }
-            if (menuOpt != 1) {
+            if (OpcionDeMenu != 1) {
                 System.out.println("Opcion no valida.");
                 continue;
             }
             
             // Carrito de compra y precios
-            String[] nombres_p = new String[10];
-            double[] precios_p = new double[10];
-            int[] cants_p = new int[10];
-            int n_prods = 0;
+            String[] NombresDeProductos = new String[10];
+            double[] PreciosDeProductos = new double[10];
+            int[] CantidadDeProductos = new int[10];
+            int NumeroDeProductos = 0;
 
             System.out.println("Carrito de Compra");
-            while(n_prods < 10) {
+            while(NumeroDeProductos < 10) {
                 System.out.print("Nombre del producto (o 'fin' para terminar): ");
                 String nombre = sc.nextLine();
                 if (nombre.equalsIgnoreCase("fin")) {
                     break;
                 }
-                nombres_p[n_prods] = nombre;
+                NombresDeProductos[NumeroDeProductos] = nombre;
                 
                 System.out.print("Precio de '" + nombre + "': ");
-                precios_p[n_prods] = sc.nextDouble();
+                PreciosDeProductos[NumeroDeProductos] = sc.nextDouble();
                 
                 System.out.print("Cantidad de '" + nombre + "': ");
-                cants_p[n_prods] = sc.nextInt();
+                CantidadDeProductos[NumeroDeProductos] = sc.nextInt();
                 sc.nextLine(); 
 
-                n_prods++;
+                NumeroDeProductos++;
             }
 
-            if(n_prods == 0){
+            if(NumeroDeProductos == 0){
                 System.out.println("Carrito vacio, no se puede calcular el descuento.");
                 continue;
             }
 
             // Calcular total del carrito
-            double p_total = 0;
-            int c_total = 0;
-            for(int i=0; i < n_prods; i++) {
-                p_total += precios_p[i] * cants_p[i];
-                c_total += cants_p[i];
+            double PrecioTotal = 0;
+            int CantidadTotal = 0;
+            for(int i=0; i < NumeroDeProductos; i++) {
+                PrecioTotal += PreciosDeProductos[i] * CantidadDeProductos[i];
+                CantidadTotal += CantidadDeProductos[i];
             }
 
             System.out.println("Configuracion del Descuento");
             System.out.print("Tipo de cliente (1=Normal, 2=Estudiante, 3=Jubilado, 4=VIP): ");
-            int t = sc.nextInt();
+            int TipoCliente = sc.nextInt();
 
             System.out.print("Es temporada de rebajas? (s/n): ");
-            char r = sc.next().charAt(0);
+            char Rebaja = sc.next().charAt(0);
             
-            double pf = p_total;
+            double PrecioFinal = PrecioTotal;
 
-            if (t == 1) { // Normal
-                if (r == 's') { pf = pf - (pf * 0.10); }
-                if (c_total >= 5) { pf = pf - (pf * 0.05); }
-            } else if (t == 2) { // Estudiante
-                pf = pf - (pf * 0.15);
-                if (r == 's') { pf = pf - (pf * 0.10); }
-                if (c_total >= 3) { pf = pf - (pf * 0.08); }
-            } else if (t == 3) { // Jubilado
-                pf = pf - (pf * 0.20);
-                if (r == 's') { pf = pf - (pf * 0.15); }
-                if (c_total >= 2) { pf = pf - (pf * 0.10); }
-            } else if (t == 4) { // VIP
-                pf = pf - (pf * 0.30);
-                if (r == 's') { pf = pf - (pf * 0.20); }
-                if (c_total >= 1) { pf = pf - (pf * 0.15); }
+            if (TipoCliente == 1) { // Normal
+                if (Rebaja == 's') { PrecioFinal = PrecioFinal - (PrecioFinal * 0.10); }
+                if (CantidadTotal >= 5) { PrecioFinal = PrecioFinal - (PrecioFinal * 0.05); }
+            } else if (TipoCliente == 2) { // Estudiante
+                PrecioFinal = PrecioFinal - (PrecioFinal * 0.15);
+                if (Rebaja == 's') { PrecioFinal = PrecioFinal - (PrecioFinal * 0.10); }
+                if (CantidadTotal >= 3) { PrecioFinal = PrecioFinal - (PrecioFinal * 0.08); }
+            } else if (TipoCliente == 3) { // Jubilado
+                PrecioFinal = PrecioFinal - (PrecioFinal * 0.20);
+                if (Rebaja == 's') { PrecioFinal = PrecioFinal - (PrecioFinal * 0.15); }
+                if (CantidadTotal >= 2) { PrecioFinal = PrecioFinal - (PrecioFinal * 0.10); }
+            } else if (TipoCliente == 4) { // VIP
+                PrecioFinal = PrecioFinal - (PrecioFinal * 0.30);
+                if (Rebaja == 's') { PrecioFinal = PrecioFinal - (PrecioFinal * 0.20); }
+                if (CantidadTotal >= 1) { PrecioFinal = PrecioFinal - (PrecioFinal * 0.15); }
             }
 
-            if (pf > 500) {
-                pf = pf - 50;
+            if (PrecioFinal > 500) {
+                PrecioFinal = PrecioFinal - 50;
             }
 
             System.out.println("Resumen de Compra");
-            System.out.println("Precio original total: " + p_total + " euros");
-            System.out.println("Numero total de productos: " + c_total);
-            System.out.println("Precio final con descuento: " + pf + " euros");
-            System.out.println("Ahorro total: " + (p_total - pf) + " euros");
-            if (p_total > 0) {
-                double porcentaje = ((p_total - pf) / p_total) * 100;
+            System.out.println("Precio original total: " + PrecioTotal + " euros");
+            System.out.println("Numero total de productos: " + CantidadTotal);
+            System.out.println("Precio final con descuento: " + PrecioFinal + " euros");
+            System.out.println("Ahorro total: " + (PrecioTotal - PrecioFinal) + " euros");
+            if (PrecioTotal > 0) {
+                double porcentaje = ((PrecioTotal - PrecioFinal) / PrecioTotal) * 100;
                 System.out.println("Porcentaje de ahorro: " + porcentaje + "%");
             }
         }

@@ -8,8 +8,6 @@ public class PyEdlinNotas {
         int lineaActiva = 0;
         String nuevoTexto;
         boolean fin = false;
-        int cambioLinea;
-        String guardarTexto;
 
         for (int posicion = 0; posicion < MEMORIA.length; posicion++) {
             MEMORIA[posicion] = "";
@@ -34,13 +32,8 @@ public class PyEdlinNotas {
                     fin = true;
                     break;
                 case 'I':
-                System.out.println("Con que linea desea intercambiar?");
-                cambioLinea = scanner.nextInt();
-                guardarTexto = MEMORIA[cambioLinea];
-                MEMORIA[cambioLinea] = MEMORIA[lineaActiva];
-                MEMORIA[lineaActiva]= guardarTexto;
-                
-                break;
+                    intercambioDeLineas(scanner, MEMORIA, lineaActiva);
+                    break;
 
                 default:
                     System.out.println("Comando Incorrecto");
@@ -86,5 +79,16 @@ public class PyEdlinNotas {
     static void borrarLinea(String MEMORIA[], int lineaActiva) {
         MEMORIA[lineaActiva] = "";
         System.out.println("Su texto fue borrado con exito");
+    }
+
+    static void intercambioDeLineas(Scanner scanner, String MEMORIA[], int lineaActiva) {
+        System.out.println("Con que linea desea intercambiar?");
+        int cambioLinea;
+        String guardarTexto;
+
+        cambioLinea = scanner.nextInt();
+        guardarTexto = MEMORIA[cambioLinea];
+        MEMORIA[cambioLinea] = MEMORIA[lineaActiva];
+        MEMORIA[lineaActiva] = guardarTexto;
     }
 }

@@ -1,3 +1,4 @@
+ 
 
 import java.util.Scanner;
 
@@ -19,8 +20,7 @@ public class PyEdlinNotas {
 
             char comando = verificarComando();
             switch (comando) {
-                case 'L' ->
-                    lineaActiva = saltoDeLinea(lineaActiva, scanner);
+                case 'L' ->          lineaActiva = saltoDeLinea(lineaActiva, scanner);
 
                 case 'E' -> MEMORIA[lineaActiva] = editarLinea(scanner);
 
@@ -85,3 +85,6 @@ public class PyEdlinNotas {
         MEMORIA[lineaActiva] = guardarTexto;
     }
 }
+
+
+

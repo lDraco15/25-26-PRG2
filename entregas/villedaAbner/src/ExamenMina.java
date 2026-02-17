@@ -65,7 +65,6 @@ public class ExamenMina {
 				mapa[posicionMinaX][posicionMinaY] = 1;
 			}
 			minas++;
-			System.out.println("La mina esta en X: " + posicionMinaY + " Y: " + posicionMinaX);
 		} while (minas < 6);
 	}
 
@@ -85,12 +84,11 @@ public class ExamenMina {
 	}
 
 	static boolean validarPosicion(int posicionX, int posicionY) {
-		if (posicionX > 5 || posicionY > 7 || posicionX < 0 || posicionY < 0) {
+		if (posicionX > 5 || posicionY > 7 || posicionX <= 0 || posicionY <= 0) {
 			System.out.println("No es correcta esa opcion.");
 			return false;
 		}
 		return true;
-
 	}
 
 	static int colocarTile(int[][] mapa, int posicionX, int posicionY) {

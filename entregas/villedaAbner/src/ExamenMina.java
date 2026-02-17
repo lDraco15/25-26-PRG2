@@ -58,7 +58,7 @@ public class ExamenMina {
 			System.out.println("Ingrese Y");
 			posicionX = sc.nextInt();
 
-			if (posicionX > 5 || posicionY > 7) {
+			if (posicionX > 5 || posicionY > 7 || posicionX < 0 || posicionY < 0 ) {
 				System.out.println("No es correcta esa opcion.");
 			} else if (mapa[posicionX][posicionY] == 1) {
 				mapa[posicionX][posicionY] = 3;

@@ -3,11 +3,12 @@ import java.util.Scanner;
 public class ExamenMina {
 
 	static int[][] mapa = {
-			{ 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0 },
+			{ -1, -1, -1, -1, -1, -1, -1 },
+			{ -1, 0, 0, 0, 0, 0, 0, 0 },
+			{ -1, 0, 0, 0, 0, 0, 0, 0 },
+			{ -1, 0, 0, 0, 0, 0, 0, 0 },
+			{ -1, 0, 0, 0, 0, 0, 0, 0 },
+			{ -1, 0, 0, 0, 0, 0, 0, 0 },
 	};
 
 	// Posiciones Random de la mina
@@ -22,7 +23,7 @@ public class ExamenMina {
 		while (colocarMinas < 6) {
 			int posicionMinaY = (int) (Math.random() * 6);
 			int posicionMinaX = (int) (Math.random() * 4);
-			if (mapa[posicionMinaX][posicionMinaY] == 1) {
+			if (mapa[posicionMinaX][posicionMinaY] == -1) {
 				posicionMinaX++;
 				posicionMinaY++;
 				mapa[posicionMinaX][posicionMinaY] = 1;
@@ -39,8 +40,8 @@ public class ExamenMina {
 		do {
 			System.out.println("========================");
 			System.out.println("    1  2  3  4  5  6  7");
-			for (int row = 0; row < mapa.length; row++) {
-				System.out.print(" " + (row + 1) + " ");
+			for (int row = 1; row < mapa.length; row++) {
+				System.out.print(" " + row + " ");
 				for (int column = 0; column < mapa[row].length; column++) {
 					if (mapa[row][column] == 0 || mapa[row][column] == 1) {
 						System.out.print(tile[0]);
@@ -59,7 +60,7 @@ public class ExamenMina {
 			System.out.println("Ingrese Y");
 			posicionX = sc.nextInt();
 
-			if (posicionX > 5 || posicionY > 7 || posicionX < 0 || posicionY < 0 ) {
+			if (posicionX > 5 || posicionY > 7 || posicionX < 0 || posicionY < 0) {
 				System.out.println("No es correcta esa opcion.");
 			} else if (mapa[posicionX][posicionY] == 1) {
 				mapa[posicionX][posicionY] = 3;

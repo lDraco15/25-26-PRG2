@@ -85,7 +85,7 @@ public class ExamenMina {
 
 	static boolean validarPosicion(int posicionX, int posicionY) {
 		if (posicionX > 5 || posicionY > 7 || posicionX <= 0 || posicionY <= 0) {
-			System.out.println("No es correcta esa opcion.");
+			System.out.println("No es correcta esa opcion");
 			return false;
 		}
 		return true;

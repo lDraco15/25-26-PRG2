@@ -8,7 +8,6 @@ public class ExamenMina {
 			{ 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0 },
 	};
 
 	// Posiciones Random de la mina
@@ -20,7 +19,7 @@ public class ExamenMina {
 		};
 		Scanner sc = new Scanner(System.in);
 		int colocarMinas = 0;
-		while (colocarMinas < 5) {
+		while (colocarMinas < 6) {
 			int posicionMinaY = (int) (Math.random() * 6);
 			int posicionMinaX = (int) (Math.random() * 4);
 			if (mapa[posicionMinaX][posicionMinaY] == 1) {
@@ -32,6 +31,7 @@ public class ExamenMina {
 				mapa[posicionMinaX][posicionMinaY] = 1;
 			}
 			colocarMinas++;
+			System.out.println("La mina esta en X: " + posicionMinaY + " Y: " + posicionMinaX);
 		}
 
 		int posicionX = 0, posicionY = 0, haTerminado = 1, contadorMapa = 0, contadorMinas = 0;
@@ -45,6 +45,8 @@ public class ExamenMina {
 						System.out.print(tile[0]);
 					} else if (mapa[row][column] == 2) {
 						System.out.print(tile[1]);
+					} else if (mapa[row][column] == 3) {
+						System.out.print(tile[2]);
 					}
 				}
 				System.out.println();
@@ -58,6 +60,10 @@ public class ExamenMina {
 
 			if (posicionX > 5 || posicionY > 7) {
 				System.out.println("No es correcta esa opcion.");
+			} else if (mapa[posicionX][posicionY] == 1) {
+				mapa[posicionX][posicionY] = 3;
+				System.out.println("Has caido en una mina");
+				contadorMinas++;
 			} else {
 				mapa[posicionX][posicionY] = 2;
 			}

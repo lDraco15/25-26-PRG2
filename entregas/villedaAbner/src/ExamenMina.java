@@ -19,7 +19,7 @@ public class ExamenMina {
 		do {
 
 			imprimirMapa(mapa);
-			contadorMinas = coordenadasDelUsuario(mapa);
+			contadorMinas = coordenadasDelUsuario(mapa) + contadorMinas;
 
 			contadorMapa++;
 			if (contadorMinas > 2) {

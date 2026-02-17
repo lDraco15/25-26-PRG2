@@ -19,7 +19,7 @@ public class ExamenMina {
 		do {
 
 			imprimirMapa(mapa);
-			coordenadasDelUsuario(mapa, contadorMinas);
+			contadorMinas = coordenadasDelUsuario(mapa);
 
 			contadorMapa++;
 			if (contadorMinas > 2) {
@@ -31,6 +31,8 @@ public class ExamenMina {
 			} else {
 
 			}
+
+			System.out.println("Minas: " +contadorMinas);
 		} while (haTerminado == false);
 	}
 
@@ -77,7 +79,7 @@ public class ExamenMina {
 		} while (minas < 6);
 	}
 
-	static void coordenadasDelUsuario(int[][] mapa, int contadorMinas) {
+	static int coordenadasDelUsuario(int[][] mapa) {
 		Scanner sc = new Scanner(System.in);
 		int posicionX;
 		int posicionY;
@@ -88,13 +90,8 @@ public class ExamenMina {
 			posicionX = sc.nextInt();
 		} while (validarPosicion(posicionX, posicionY) == false);
 
-		if (mapa[posicionX][posicionY] == 1) {
-			mapa[posicionX][posicionY] = 3;
-			System.out.println("Has caido en una mina");
-			contadorMinas++;
-		} else {
-			mapa[posicionX][posicionY] = 2;
-		}
+		int contadorMinas = colocarTile(mapa, posicionX, posicionY);	
+		return contadorMinas;
 	}
 
 	static boolean validarPosicion(int posicionX, int posicionY) {
@@ -106,4 +103,15 @@ public class ExamenMina {
 
 	}
 
+	static int colocarTile(int[][] mapa, int posicionX, int posicionY) {
+		int contadorMinas = 0;
+		if (mapa[posicionX][posicionY] == 1) {
+			mapa[posicionX][posicionY] = 3;
+			System.out.println("Has caido en una mina");
+			contadorMinas++;
+		} else {
+			mapa[posicionX][posicionY] = 2;
+		}
+		return contadorMinas;
+	}
 }

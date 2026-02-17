@@ -34,7 +34,8 @@ public class ExamenMina {
 			System.out.println("La mina esta en X: " + posicionMinaY + " Y: " + posicionMinaX);
 		}
 
-		int posicionX = 0, posicionY = 0, haTerminado = 1, contadorMapa = 0, contadorMinas = 0;
+		int posicionX = 0, posicionY = 0, contadorMapa = 0, contadorMinas = 0;
+		boolean haTerminado = false;
 		do {
 			System.out.println("========================");
 			System.out.println("    1  2  3  4  5  6  7");
@@ -70,15 +71,15 @@ public class ExamenMina {
 
 			contadorMapa++;
 			if (contadorMinas > 2) {
-				haTerminado = 0;
+				haTerminado = true;
 				System.out.println("Has perdido");
 			} else if (contadorMapa >= 31) {
 				System.out.println("Felicidades Ganador!");
-				haTerminado = 0;
+				haTerminado = true;
 			} else {
 
 			}
-		} while (haTerminado == 1);
+		} while (haTerminado == false);
 	}
 
 }

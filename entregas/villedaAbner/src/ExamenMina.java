@@ -79,17 +79,16 @@ public class ExamenMina {
 
 	static void coordenadasDelUsuario(int[][] mapa, int contadorMinas) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Ingrese X");
 		int posicionX;
 		int posicionY;
+		do {
+			System.out.println("Ingrese X");
+			posicionY = sc.nextInt();
+			System.out.println("Ingrese Y");
+			posicionX = sc.nextInt();
+		} while (validarPosicion(posicionX, posicionY) == false);
 
-		posicionY = sc.nextInt();
-		System.out.println("Ingrese Y");
-		posicionX = sc.nextInt();
-
-		if (posicionX > 5 || posicionY > 7 || posicionX < 0 || posicionY < 0) {
-			System.out.println("No es correcta esa opcion.");
-		} else if (mapa[posicionX][posicionY] == 1) {
+		if (mapa[posicionX][posicionY] == 1) {
 			mapa[posicionX][posicionY] = 3;
 			System.out.println("Has caido en una mina");
 			contadorMinas++;
@@ -97,4 +96,14 @@ public class ExamenMina {
 			mapa[posicionX][posicionY] = 2;
 		}
 	}
+
+	static boolean validarPosicion(int posicionX, int posicionY) {
+		if (posicionX > 5 || posicionY > 7 || posicionX < 0 || posicionY < 0) {
+			System.out.println("No es correcta esa opcion.");
+			return false;
+		}
+		return true;
+
+	}
+
 }

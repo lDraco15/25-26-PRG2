@@ -20,19 +20,9 @@ public class ExamenMina {
 
 			imprimirMapa(mapa);
 			contadorMinas = coordenadasDelUsuario(mapa) + contadorMinas;
-
 			contadorMapa++;
-			if (contadorMinas > 2) {
-				haTerminado = true;
-				System.out.println("Has perdido");
-			} else if (contadorMapa >= 31) {
-				System.out.println("Felicidades Ganador!");
-				haTerminado = true;
-			} else {
-
-			}
-
-			System.out.println("Minas: " +contadorMinas);
+			haTerminado = haTerminadoElJuego(contadorMapa, contadorMinas);
+			System.out.println("Minas: " + contadorMinas);
 		} while (haTerminado == false);
 	}
 
@@ -90,7 +80,7 @@ public class ExamenMina {
 			posicionX = sc.nextInt();
 		} while (validarPosicion(posicionX, posicionY) == false);
 
-		int contadorMinas = colocarTile(mapa, posicionX, posicionY);	
+		int contadorMinas = colocarTile(mapa, posicionX, posicionY);
 		return contadorMinas;
 	}
 
@@ -113,5 +103,18 @@ public class ExamenMina {
 			mapa[posicionX][posicionY] = 2;
 		}
 		return contadorMinas;
+	}
+
+	static boolean haTerminadoElJuego(int contadorMapa, int contadorMinas) {
+		if (contadorMinas > 2) {
+			System.out.println("Has perdido");
+			return true;
+		} else if (contadorMapa >= 31) {
+			System.out.println("Felicidades Ganador!");
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 }

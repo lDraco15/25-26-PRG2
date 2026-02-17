@@ -12,28 +12,14 @@ public class ExamenMina {
 				{ -1, 0, 0, 0, 0, 0, 0, 0 },
 				{ -1, 0, 0, 0, 0, 0, 0, 0 },
 		};
-		Scanner sc = new Scanner(System.in);
 		colocarMinas(mapa);
 
-		int posicionX = 0, posicionY = 0, contadorMapa = 0, contadorMinas = 0;
+		int contadorMapa = 0, contadorMinas = 0;
 		boolean haTerminado = false;
 		do {
 
 			imprimirMapa(mapa);
-			System.out.println("Ingrese X");
-			posicionY = sc.nextInt();
-			System.out.println("Ingrese Y");
-			posicionX = sc.nextInt();
-
-			if (posicionX > 5 || posicionY > 7 || posicionX < 0 || posicionY < 0) {
-				System.out.println("No es correcta esa opcion.");
-			} else if (mapa[posicionX][posicionY] == 1) {
-				mapa[posicionX][posicionY] = 3;
-				System.out.println("Has caido en una mina");
-				contadorMinas++;
-			} else {
-				mapa[posicionX][posicionY] = 2;
-			}
+			coordenadasDelUsuario(mapa, contadorMinas);
 
 			contadorMapa++;
 			if (contadorMinas > 2) {
@@ -75,7 +61,7 @@ public class ExamenMina {
 
 	static void colocarMinas(int[][] mapa) {
 		int minas = 0;
-		while (minas < 6) {
+		do {
 			int posicionMinaY = (int) (Math.random() * 6);
 			int posicionMinaX = (int) (Math.random() * 4);
 			if (mapa[posicionMinaX][posicionMinaY] == -1) {
@@ -88,6 +74,27 @@ public class ExamenMina {
 			}
 			minas++;
 			System.out.println("La mina esta en X: " + posicionMinaY + " Y: " + posicionMinaX);
+		} while (minas < 6);
+	}
+
+	static void coordenadasDelUsuario(int[][] mapa, int contadorMinas) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Ingrese X");
+		int posicionX;
+		int posicionY;
+
+		posicionY = sc.nextInt();
+		System.out.println("Ingrese Y");
+		posicionX = sc.nextInt();
+
+		if (posicionX > 5 || posicionY > 7 || posicionX < 0 || posicionY < 0) {
+			System.out.println("No es correcta esa opcion.");
+		} else if (mapa[posicionX][posicionY] == 1) {
+			mapa[posicionX][posicionY] = 3;
+			System.out.println("Has caido en una mina");
+			contadorMinas++;
+		} else {
+			mapa[posicionX][posicionY] = 2;
 		}
 	}
 }

@@ -34,8 +34,10 @@ public class ExamenMina {
 
 		int posicionX = 0, posicionY = 0, haTerminado = 1, valoresCorrectos, contadorMapa = 0, contadorMinas = 0;
 		while (haTerminado == 1) {
+			System.out.println("========================");
+			System.out.println("    1  2  3  4  5  6  7");
 			for (int row = 0; row < mapa.length; row++) {
-				System.out.print(" " + row + " ");
+				System.out.print(" " + (row + 1) + " ");
 				for (int column = 0; column < mapa[row].length; column++) {
 					if (mapa[row][column] == 0 || mapa[row][column] == 1) {
 						System.out.print(tile[0]);
@@ -43,6 +45,8 @@ public class ExamenMina {
 				}
 				System.out.println();
 			}
+			System.out.println("========================");
+
 			valoresCorrectos = 0;// reseteo de la variable
 			while (valoresCorrectos == 0) {
 				System.out.println(" ");

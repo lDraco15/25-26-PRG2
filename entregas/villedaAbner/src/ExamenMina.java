@@ -13,26 +13,12 @@ public class ExamenMina {
 				{ -1, 0, 0, 0, 0, 0, 0, 0 },
 		};
 		Scanner sc = new Scanner(System.in);
-		int colocarMinas = 0;
-		while (colocarMinas < 6) {
-			int posicionMinaY = (int) (Math.random() * 6);
-			int posicionMinaX = (int) (Math.random() * 4);
-			if (mapa[posicionMinaX][posicionMinaY] == -1) {
-				posicionMinaX++;
-				posicionMinaY++;
-				mapa[posicionMinaX][posicionMinaY] = 1;
-
-			} else {
-				mapa[posicionMinaX][posicionMinaY] = 1;
-			}
-			colocarMinas++;
-			System.out.println("La mina esta en X: " + posicionMinaY + " Y: " + posicionMinaX);
-		}
+		colocarMinas(mapa);
 
 		int posicionX = 0, posicionY = 0, contadorMapa = 0, contadorMinas = 0;
 		boolean haTerminado = false;
 		do {
-			
+
 			imprimirMapa(mapa);
 			System.out.println("Ingrese X");
 			posicionY = sc.nextInt();
@@ -62,7 +48,7 @@ public class ExamenMina {
 		} while (haTerminado == false);
 	}
 
-	static void imprimirMapa(int[][] mapa){
+	static void imprimirMapa(int[][] mapa) {
 		String[] tile = {
 				" - ",
 				" . ",
@@ -70,21 +56,38 @@ public class ExamenMina {
 				"========================"
 		};
 		System.out.println(tile[3]);
-			System.out.println("    1  2  3  4  5  6  7");
-			for (int row = 1; row < mapa.length; row++) {
-				System.out.print(" " + row + " ");
-				for (int column = 0; column < mapa[row].length; column++) {
-					if (mapa[row][column] == 0 || mapa[row][column] == 1) {
-						System.out.print(tile[0]);
-					} else if (mapa[row][column] == 2) {
-						System.out.print(tile[1]);
-					} else if (mapa[row][column] == 3) {
-						System.out.print(tile[2]);
-					}
+		System.out.println("    1  2  3  4  5  6  7");
+		for (int row = 1; row < mapa.length; row++) {
+			System.out.print(" " + row + " ");
+			for (int column = 0; column < mapa[row].length; column++) {
+				if (mapa[row][column] == 0 || mapa[row][column] == 1) {
+					System.out.print(tile[0]);
+				} else if (mapa[row][column] == 2) {
+					System.out.print(tile[1]);
+				} else if (mapa[row][column] == 3) {
+					System.out.print(tile[2]);
 				}
-				System.out.println();
 			}
-			System.out.println(tile[3]);
+			System.out.println();
+		}
+		System.out.println(tile[3]);
 	}
 
+	static void colocarMinas(int[][] mapa) {
+		int minas = 0;
+		while (minas < 6) {
+			int posicionMinaY = (int) (Math.random() * 6);
+			int posicionMinaX = (int) (Math.random() * 4);
+			if (mapa[posicionMinaX][posicionMinaY] == -1) {
+				posicionMinaX++;
+				posicionMinaY++;
+				mapa[posicionMinaX][posicionMinaY] = 1;
+
+			} else {
+				mapa[posicionMinaX][posicionMinaY] = 1;
+			}
+			minas++;
+			System.out.println("La mina esta en X: " + posicionMinaY + " Y: " + posicionMinaX);
+		}
+	}
 }

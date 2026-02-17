@@ -8,13 +8,15 @@ public class ExamenMina {
 			{ 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0 },
 			{ 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0 },
 	};
 
 	// Posiciones Random de la mina
 	public static void main(String[] args) {
 		String[] tile = {
 				" - ",
-				"="
+				" . ",
+				" * "
 		};
 		Scanner sc = new Scanner(System.in);
 		int colocarMinas = 0;
@@ -32,8 +34,8 @@ public class ExamenMina {
 			colocarMinas++;
 		}
 
-		int posicionX = 0, posicionY = 0, haTerminado = 1, valoresCorrectos, contadorMapa = 0, contadorMinas = 0;
-		while (haTerminado == 1) {
+		int posicionX = 0, posicionY = 0, haTerminado = 1, contadorMapa = 0, contadorMinas = 0;
+		do {
 			System.out.println("========================");
 			System.out.println("    1  2  3  4  5  6  7");
 			for (int row = 0; row < mapa.length; row++) {
@@ -41,35 +43,23 @@ public class ExamenMina {
 				for (int column = 0; column < mapa[row].length; column++) {
 					if (mapa[row][column] == 0 || mapa[row][column] == 1) {
 						System.out.print(tile[0]);
+					} else if (mapa[row][column] == 2) {
+						System.out.print(tile[1]);
 					}
 				}
 				System.out.println();
 			}
 			System.out.println("========================");
 
-			valoresCorrectos = 0;// reseteo de la variable
-			while (valoresCorrectos == 0) {
-				System.out.println(" ");
-				System.out.println("Ingrese X");
-				posicionY = sc.nextInt();
-				System.out.println("Ingrese Y");
-				posicionX = sc.nextInt();
-				if (posicionX > 5) {
-					valoresCorrectos = 0;
-				} else if (posicionY > 7) {
-					valoresCorrectos = 0;
-				} else {
-					valoresCorrectos = 1;
-				}
-			}
+			System.out.println("Ingrese X");
+			posicionY = sc.nextInt();
+			System.out.println("Ingrese Y");
+			posicionX = sc.nextInt();
 
-			if (mapa[posicionX][posicionY] == 1) {
-				mapa[posicionX][posicionY] = 3;
-				contadorMinas++;
-			} else if (mapa[posicionX][posicionY] == 0) {
-				mapa[posicionX][posicionY] = 2;
-			} else {
+			if (posicionX > 5 || posicionY > 7) {
 				System.out.println("No es correcta esa opcion.");
+			} else {
+				mapa[posicionX][posicionY] = 2;
 			}
 
 			contadorMapa++;
@@ -82,7 +72,7 @@ public class ExamenMina {
 			} else {
 
 			}
-		}
+		} while (haTerminado == 1);
 	}
 
 }

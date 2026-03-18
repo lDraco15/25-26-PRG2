@@ -35,7 +35,7 @@ public class Fraccion {
     }
 
     public Fraccion clonar() {
-        return null;
+        return new Fraccion(this);
     }
 
     public void sumar(Fraccion fraccion) {

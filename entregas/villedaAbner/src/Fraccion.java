@@ -104,6 +104,7 @@ public class Fraccion {
     }
 
     public void oponer() {
+        this.numerador = this.numerador * -1;
     }
 
 }

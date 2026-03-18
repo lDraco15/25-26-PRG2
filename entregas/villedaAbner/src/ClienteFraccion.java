@@ -1,12 +1,13 @@
 public class ClienteFraccion {
     public static void main(String[] args) {
         Fraccion unMedio = new Fraccion(1, 2);
-        
         Fraccion unTercio = new Fraccion(1, 3);
-    
-        unMedio.multiplicar(unTercio); 
+        System.out.println("¿Es 1/2 mayor que 1/3?");
         
-        unMedio.mostrar();
+        System.out.println(unMedio.esMayor(unTercio)); 
+        
+        System.out.println("¿Es 1/3 mayor que 1/2?");
+        System.out.println(unTercio.esMayor(unMedio));
 
     }
 }

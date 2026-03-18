@@ -19,12 +19,19 @@ public class Fraccion {
     }
 
     public Fraccion(int numero) {
+        this.numerador = numero;
+        this.denominador = 1;
     }
 
     public Fraccion(Fraccion fraccion) {
+        this.numerador = fraccion.numerador;
+        this.denominador = fraccion.denominador;
+        
     }
 
     public Fraccion() {
+        this.numerador = 0;
+        this.denominador = 1;
     }
 
     public Fraccion clonar() {
@@ -42,8 +49,6 @@ public class Fraccion {
 
     }
 
-    public void sumarNumeroEntero(int numero) {
-    }
 
     public void restar(Fraccion fraccion) {
         int nuevoNumerador = (this.numerador * fraccion.denominador) - (this.denominador * fraccion.numerador);

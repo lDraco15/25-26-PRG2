@@ -97,6 +97,10 @@ public class Fraccion {
     }
 
     public void invertir() {
+        int temporal = this.numerador;
+
+        this.numerador = this.denominador;
+        this.denominador = temporal;
     }
 
     public void oponer() {

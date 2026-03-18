@@ -104,7 +104,7 @@ public class Fraccion {
     }
 
     public String toString() {
-        return "";
+        return this.numerador + "/"+ this.denominador;
     }
 
     public void invertir() {

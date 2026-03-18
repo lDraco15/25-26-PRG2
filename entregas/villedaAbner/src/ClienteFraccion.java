@@ -3,6 +3,6 @@ public class ClienteFraccion {
         Fraccion unMedio = new Fraccion(1, 2);
         
         
-        System.out.println(unMedio.decimal());
+        System.out.println(unMedio);
     }
 }

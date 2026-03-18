@@ -92,6 +92,12 @@ public class Fraccion {
     public boolean equals(Fraccion fraccion) {
         return this.numerador == fraccion.numerador && this.denominador == fraccion.denominador;
     }
+    public double decimal() {
+        double dividendo = this.numerador;
+        double divisor = this.denominador;
+
+        return dividendo/divisor;
+    }
 
     public void mostrar() {
         System.out.println(numerador + "/" + denominador);

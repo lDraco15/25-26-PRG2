@@ -32,6 +32,14 @@ public class Fraccion {
     }
 
     public void sumar(Fraccion fraccion) {
+        int nuevoNumerador = (this.numerador * fraccion.denominador) + (this.denominador * fraccion.numerador);
+        int nuevoDenominador = this.denominador * fraccion.denominador;
+
+        int mcd = this.calcularMCD(nuevoNumerador, nuevoDenominador);
+
+        this.numerador = nuevoNumerador / mcd;
+        this.denominador = nuevoDenominador / mcd;
+
     }
 
     public void sumar(int numero) {

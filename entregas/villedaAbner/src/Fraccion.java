@@ -52,11 +52,14 @@ public class Fraccion {
         int miValorCruzado = this.numerador * fraccion.denominador;
         int otroValorCruzado = this.denominador * fraccion.numerador;
 
-        return miValorCruzado>otroValorCruzado;
+        return miValorCruzado > otroValorCruzado;
     }
 
     public boolean esMenor(Fraccion fraccion) {
-        return false;
+        int miValorCruzado = this.numerador * fraccion.denominador;
+        int otroValorCruzado = this.denominador * fraccion.numerador;
+        
+        return miValorCruzado > otroValorCruzado;
     }
 
     public boolean equals(Fraccion fraccion) {

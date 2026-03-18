@@ -61,6 +61,13 @@ public class Fraccion {
     }
 
     public void dividir(Fraccion fraccion) {
+        int nuevoNumerador = this.numerador * fraccion.denominador;
+        int nuevoDenominador = this.denominador * fraccion.numerador;
+
+        int mcd = this.calcularMCD(nuevoNumerador, nuevoDenominador);
+
+        this.numerador = nuevoNumerador / mcd;
+        this.denominador = nuevoDenominador / mcd;
     }
 
     public boolean esMayor(Fraccion fraccion) {

@@ -3,7 +3,7 @@ public class ClienteFraccion {
         Fraccion unMedio = new Fraccion(1, 2);
         Fraccion dosCuartos = new Fraccion(2, 4);
         
-        unMedio.sumar(dosCuartos);
+        unMedio.restar(dosCuartos);
         unMedio.mostrar();
 
     }

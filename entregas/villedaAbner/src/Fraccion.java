@@ -38,41 +38,32 @@ public class Fraccion {
         return new Fraccion(this);
     }
 
-    public void sumar(Fraccion fraccion) {
+    public Fraccion sumar(Fraccion fraccion) {
         int nuevoNumerador = (this.numerador * fraccion.denominador) + (this.denominador * fraccion.numerador);
         int nuevoDenominador = this.denominador * fraccion.denominador;
 
-        int mcd = this.calcularMCD(nuevoNumerador, nuevoDenominador);
-
-        this.numerador = nuevoNumerador / mcd;
-        this.denominador = nuevoDenominador / mcd;
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
 
     }
 
 
-    public void restar(Fraccion fraccion) {
+    public Fraccion restar(Fraccion fraccion) {
         int nuevoNumerador = (this.numerador * fraccion.denominador) - (this.denominador * fraccion.numerador);
         int nuevoDenominador = this.denominador * fraccion.denominador;
 
-        int mcd = this.calcularMCD(nuevoNumerador, nuevoDenominador);
+    return new Fraccion(nuevoNumerador, nuevoDenominador);
 
-        this.numerador = nuevoNumerador / mcd;
-        this.denominador = nuevoDenominador / mcd;
     }
 
-    public void multiplicar(Fraccion fraccion) {
-        this.numerador = this.numerador * fraccion.numerador;
-        this.denominador = this.denominador * fraccion.denominador;
+    public Fraccion multiplicar(Fraccion fraccion) {
+        return new Fraccion(this.numerador*fraccion.numerador, this.denominador*fraccion.denominador);
     }
 
-    public void dividir(Fraccion fraccion) {
+    public Fraccion dividir(Fraccion fraccion) {
         int nuevoNumerador = this.numerador * fraccion.denominador;
         int nuevoDenominador = this.denominador * fraccion.numerador;
 
-        int mcd = this.calcularMCD(nuevoNumerador, nuevoDenominador);
-
-        this.numerador = nuevoNumerador / mcd;
-        this.denominador = nuevoDenominador / mcd;
+        return new Fraccion(nuevoNumerador,nuevoDenominador);
     }
 
     public boolean esMayor(Fraccion fraccion) {

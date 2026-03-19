@@ -1,8 +1,8 @@
 public class ClienteFraccion {
     public static void main(String[] args) {
-        Fraccion unMedio = new Fraccion(1, 2);
+    Console console = new Console();         
         
-        
-        System.out.println(unMedio);
+    Fraccion unMedio = new Fraccion(1, 2);
+    console.writeln(unMedio); 
     }
 }

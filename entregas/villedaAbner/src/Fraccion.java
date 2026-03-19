@@ -95,15 +95,12 @@ public class Fraccion {
         return this.numerador + "/" + this.denominador;
     }
 
-    public void invertir() {
-        int temporal = this.numerador;
-
-        this.numerador = this.denominador;
-        this.denominador = temporal;
+    public Fraccion invertir() {
+        return new Fraccion(this.denominador, this.numerador);
     }
 
-    public void oponer() {
-        this.numerador = this.numerador * -1;
+    public Fraccion oponer() {
+        return new Fraccion(this.numerador * -1, this.denominador);
     }
 
 }

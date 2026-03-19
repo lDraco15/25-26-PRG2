@@ -19,19 +19,16 @@ public class Fraccion {
     }
 
     public Fraccion(int numero) {
-        this.numerador = numero;
-        this.denominador = 1;
+        this(numero, 1);
     }
 
     public Fraccion(Fraccion fraccion) {
-        this.numerador = fraccion.numerador;
-        this.denominador = fraccion.denominador;
-        
+        this(fraccion.numerador, fraccion.denominador);
+
     }
 
     public Fraccion() {
-        this.numerador = 0;
-        this.denominador = 1;
+        this(0, 1);
     }
 
     public Fraccion clonar() {
@@ -46,24 +43,23 @@ public class Fraccion {
 
     }
 
-
     public Fraccion restar(Fraccion fraccion) {
         int nuevoNumerador = (this.numerador * fraccion.denominador) - (this.denominador * fraccion.numerador);
         int nuevoDenominador = this.denominador * fraccion.denominador;
 
-    return new Fraccion(nuevoNumerador, nuevoDenominador);
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
 
     }
 
     public Fraccion multiplicar(Fraccion fraccion) {
-        return new Fraccion(this.numerador*fraccion.numerador, this.denominador*fraccion.denominador);
+        return new Fraccion(this.numerador * fraccion.numerador, this.denominador * fraccion.denominador);
     }
 
     public Fraccion dividir(Fraccion fraccion) {
         int nuevoNumerador = this.numerador * fraccion.denominador;
         int nuevoDenominador = this.denominador * fraccion.numerador;
 
-        return new Fraccion(nuevoNumerador,nuevoDenominador);
+        return new Fraccion(nuevoNumerador, nuevoDenominador);
     }
 
     public boolean esMayor(Fraccion fraccion) {
@@ -83,11 +79,12 @@ public class Fraccion {
     public boolean equals(Fraccion fraccion) {
         return this.numerador == fraccion.numerador && this.denominador == fraccion.denominador;
     }
+
     public double decimal() {
         double dividendo = this.numerador;
         double divisor = this.denominador;
 
-        return dividendo/divisor;
+        return dividendo / divisor;
     }
 
     public void mostrar() {
@@ -95,7 +92,7 @@ public class Fraccion {
     }
 
     public String toString() {
-        return this.numerador + "/"+ this.denominador;
+        return this.numerador + "/" + this.denominador;
     }
 
     public void invertir() {

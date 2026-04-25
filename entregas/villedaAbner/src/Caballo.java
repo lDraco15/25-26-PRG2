@@ -1,17 +1,25 @@
 public class Caballo {
 
-    public Caballo(int i) {
-        //TODO Auto-generated constructor stub
+    private int numero;
+    private int posicion;
+    private Console console;
+
+    public Caballo(int numero) {
+        this.numero = numero;
+        this.posicion = 0;
+        console = new Console();
     }
 
     public void avanzar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'avanzar'");
+        int casillasAvanzadas;
+        casillasAvanzadas = (int) (Math.random() * 3);
+        this.posicion = posicion + casillasAvanzadas;
     }
 
     public void celebrar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'celebrar'");
+        
+
+        console.writeln("El caballo '" + this.numero + "' ha ganado!!");
     }
-    
+
 }

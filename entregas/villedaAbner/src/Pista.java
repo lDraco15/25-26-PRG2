@@ -1,6 +1,6 @@
 public class Pista {
     final private int NUMEROCASILLAS = 40;
-    final private String BORDE = "---";
+    final private String BORDE = "-";
     final private String VACIO = " ";
     final private String CABALLO = ";-;'";
     private Caballo[] caballos;

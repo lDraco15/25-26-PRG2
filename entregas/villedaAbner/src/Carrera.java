@@ -6,7 +6,7 @@ public class Carrera {
     private Console console;
 
     public Carrera() {
-        caballos = new Caballo[2];
+        caballos = new Caballo[5];
         for (int i = 0; i < caballos.length; i++) {
             caballos[i] = new Caballo(i + 1);
         }

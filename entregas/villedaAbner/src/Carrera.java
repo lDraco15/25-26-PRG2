@@ -16,8 +16,10 @@ public class Carrera {
     public void jugar() {
         do {
             pista.mostrar();
+            for (int i = 0; i < caballos.length; i++) {
             caballos[turno.toca()].avanzar();
             turno.cambiar();
+        }
 
         } while (!pista.hayGanador() && !pista.hayEmpate());
 

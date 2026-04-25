@@ -146,4 +146,16 @@ public class Console {
     private void writeError(String regExp) {
         System.out.println("Error de formato: se esperaba " + regExp);
     }
+
+    public void pause(int seconds) {
+        try {
+            Thread.sleep(1000 * seconds);
+        } catch (InterruptedException e) {
+        }
+    }
+
+    public void cleanScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 }

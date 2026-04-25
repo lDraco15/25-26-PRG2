@@ -20,4 +20,7 @@ public class Caballo {
         console.writeln("El caballo '" + this.numero + "' ha ganado!!");
     }
 
+    public int getPosicion() {
+        return this.posicion;
+    }
 }

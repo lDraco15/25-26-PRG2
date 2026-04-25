@@ -17,8 +17,6 @@ public class Caballo {
     }
 
     public void celebrar() {
-        
-
         console.writeln("El caballo '" + this.numero + "' ha ganado!!");
     }
 

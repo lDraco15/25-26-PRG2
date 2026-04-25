@@ -9,7 +9,7 @@ public class Carrera {
         for (int i = 0; i < caballos.length; i++) {
             caballos[i] = new Caballo(i + 1);
         }
-        turno = new Turno();
+        turno = new Turno(caballos.length);
         pista = new Pista();
     }
 

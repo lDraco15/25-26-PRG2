@@ -29,11 +29,11 @@ public class Mano {
         }
         console.write(" - Puntaje: " + this.getPuntaje());
        if (this.getPuntaje() == 21) {
-            console.write("  ==> Ganó");
+            console.writeln("  ==> Ganó");
         } else if (this.getPuntaje() > 21) {
-            console.write("  ==> Perdió");
+            console.writeln("  ==> Perdió");
         } else {
-            console.write("  ==> Sigue jugando");
+            console.writeln("  ==> Sigue jugando");
         }
     }
 

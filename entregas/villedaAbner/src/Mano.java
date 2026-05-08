@@ -1,29 +1,66 @@
 public class Mano {
 
+    private Carta[] cartas;
+    private int ultima;
+    private Console console;
 
-    public void agarrar(Baraja baraja) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'agarrar'");
+    public Mano() {
+        cartas = new Carta[12];
+        ultima = 0;
+        console= new Console();
+
     }
 
-    public void reiniciar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'reiniciar'");
+    public void agarrar(Baraja baraja) {
+        cartas[ultima] = baraja.sacar();
+        ultima++;
+        this.cima().voltearCarta();
+    }
+
+    public void reiniciar(Baraja baraja) {
+        ultima = 0;
+        this.roboInicial(baraja);
     }
 
     public void mostrar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+        console.write("Mano: ");
+        for (int i = 0; i < ultima; i++) {
+            cartas[i].mostrar();
+        }
+        console.write(" - Puntaje: " + this.getPuntaje());
+       if (this.getPuntaje() == 21) {
+            console.write("  ==> Ganó");
+        } else if (this.getPuntaje() > 21) {
+            console.write("  ==> Perdió");
+        } else {
+            console.write("  ==> Sigue jugando");
+        }
     }
 
     public void roboInicial(Baraja baraja) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'roboInicial'");
+        for (int i = 0; i < 2; i++) {
+            this.agarrar(baraja);
+        }
     }
 
     public int getPuntaje() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPuntaje'");
+        int puntajeTotal = 0;
+        boolean hayAs = false;
+        for (int i = 0; i < ultima; i++) {
+            puntajeTotal += cartas[i].puntajeDeLaCarta();
+            if (cartas[i].esAs()) {
+                hayAs = true;
+            }
+        }
+        if (hayAs && puntajeTotal + 10 <= 21) {
+            puntajeTotal += 10;
+        }
+
+        return puntajeTotal;
     }
-    
+
+    private Carta cima() {
+        return cartas[ultima - 1];
+    }
+
 }

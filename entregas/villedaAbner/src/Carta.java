@@ -51,7 +51,7 @@ public class Carta {
         return caras[numero];
     }
 
-    public int PuntajeDeLaCarta() {
+    public int puntajeDeLaCarta() {
         int puntaje = this.numero + 1;
         if (puntaje > 9) {
             puntaje = 10;

@@ -44,13 +44,6 @@ public class Baraja {
         return cartas[ultima - 1];
     }
 
-    public void moverA(Descarte descarte) {
-        Carta carta = this.cima();
-        ultima--;
-        descarte.recibirCarta(carta);
-
-    }
-
     public boolean estaVacia() {
         return ultima == 0;
     }

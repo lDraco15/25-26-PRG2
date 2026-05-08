@@ -26,7 +26,7 @@ public class BlackJack {
                     mano.agarrar(baraja);
                     break;
                 case 2:
-                    mano.reiniciar();
+                    mano.reiniciar(baraja);
                     break;
                 case 3:
                     estaJugando = false;
@@ -46,7 +46,7 @@ public class BlackJack {
     }
 
     private boolean validarFinal() {
-        return mano.getPuntaje() == 21;
+        return mano.getPuntaje() >= 21;
     }
 
     public static void main(String[] args) {

@@ -38,11 +38,6 @@ public class BlackJack {
 
         } while (!haGanado && estaJugando);
 
-        if (!haGanado) {
-            console.writeln("No has Ganado");
-        } else {
-            console.writeln("Ganaste");
-        }
     }
 
     private boolean validarFinal() {

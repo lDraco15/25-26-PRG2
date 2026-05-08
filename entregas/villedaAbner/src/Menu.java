@@ -5,6 +5,7 @@ public class Menu {
         console = new Console();
     }
     public int pediropcion() {
+        console.write("Elige una opcion: "); 
         return console.readInt();
     }
 

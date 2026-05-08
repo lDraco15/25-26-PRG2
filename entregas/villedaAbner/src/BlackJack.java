@@ -17,7 +17,7 @@ public class BlackJack {
         Menu menu = new Menu();
         mano.roboInicial(baraja);
         do {
-            
+
             mano.mostrar();
             menu.mostrar();
             int opcion = menu.pediropcion();
@@ -37,6 +37,7 @@ public class BlackJack {
             haGanado = this.validarFinal();
 
         } while (!haGanado && estaJugando);
+        mano.mostrar();
 
     }
 
